@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
@@ -14,6 +18,11 @@
     </form>
     </div>
     
-
+ 	<?php
+    if(isset($_SESSION['feedback'])) {
+        echo "<p>{$_SESSION['feedback']}</p>";
+        unset($_SESSION['feedback']);
+    }
+	?>
     </body>
 </html>

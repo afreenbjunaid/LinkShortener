@@ -32,8 +32,9 @@
 #		referrerURL		character varying
 #		browserAgent	character varying
 #
-#
-#
+# Number(ID) to Short String Shortening Web API built using Bijective conversion
+# Char set includes numbers, large & small alphabets
+# Total 51 chars as "aeiou AEIOU l1 O0" are removed to avoid undesired and ambiguous words
 #
 #
 #
