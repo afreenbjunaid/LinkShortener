@@ -1,0 +1,34 @@
+body {
+	background-color: #ffcc99;
+}
+
+.title {
+	font: 2.5em Trebuchet MS;
+	font-weight: bold;
+}
+
+.container {
+	width: 100%;
+	max-width: 500px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+input[type="url"] {
+	font: 0.9em Trebuchet MS;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	margin: 0 auto;
+	width: 300px;
+}
+
+input[type="submit"] {
+	font: 0.8em Tahoma;
+	font-weight: bold;
+	padding: 9px;
+	background-color: #ff9966;
+	border: 1.5px solid #000;
+	margin: 0 auto;
+}
+
