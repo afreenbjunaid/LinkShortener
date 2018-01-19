@@ -1,5 +1,9 @@
 <?php
-    session_start();
+
+// Front-End
+
+date_default_timezone_set('Asia/Singapore');
+session_start();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
@@ -18,7 +22,8 @@
     </form>
     </div>
     
- 	<?php
+    <?php
+    // Display feedback messages
     if(isset($_SESSION['feedback'])) {
         echo "<p>{$_SESSION['feedback']}</p>";
         unset($_SESSION['feedback']);

@@ -1,7 +1,12 @@
 <?php
 
+// DB Connection elements and functions
+
+date_default_timezone_set('Asia/Singapore');
+
 class dbConnection {
-    
+
+    // Connection string attributes
     protected $hostname = "horton.elephantsql.com";
     protected $username = "wfxfxqkx";
     protected $pwd = "kwxarQMBMlHxtDbYlfWo8ipuA94-aQ7-";

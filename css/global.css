@@ -14,6 +14,16 @@ body {
 	margin: 0 auto;
 }
 
+.accessLog {
+	width: 100%;
+	max-width: 500px;
+	text-align: center;
+	margin: 0 auto;
+	font: 1.2em Tahoma;
+	color: #660000;
+	font-weight: bold;
+}
+
 input[type="url"] {
 	font: 0.9em Trebuchet MS;
 	padding: 10px;
@@ -32,7 +42,57 @@ input[type="submit"] {
 	margin: 0 auto;
 }
 
+table#summaryTable th {
+	font: 1.0em Tahoma;
+	color: #660000;
+	font-weight: bold;
+	border-style: none;
+    padding: 5px;
+    text-align: left;
+}
+
+table#summaryTable td {
+	font: 0.8em Tahoma;
+	font-weight:bold;
+	border-style: none;
+	padding: 5px;
+    text-align: left;
+}
+
+table#logTable {
+	border-collapse: collapse;
+}
+
+table#logTable tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
+table#logTable tr:hover {
+	background-color: #cccccc;
+}
+
+table#logTable th {
+	font: 0.9em Tahoma;
+	font-weight: bold;
+	border: 1px solid black;
+    padding: 7px;
+    text-align: center;
+    background-color: #cc9999;
+}
+
+table#logTable td {
+	font: 0.75em Tahoma;
+	text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+    background-color:#ffcccc;
+}
+
 .shortLink, .result {
 	font: 1.2em Trebuchet MS;
 	font-weight:bold;
+}
+
+.stats {
+	font: 0.8em Verdana; 
 }
