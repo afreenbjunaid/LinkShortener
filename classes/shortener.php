@@ -85,6 +85,37 @@ class shortener{
     // To get the long URL destination entered
     public function getURL($shortCode) {
         
+        $shortCode = pg_escape_string($shortCode);
+        
+        $longURLQuery = 'SELECT "longURL" FROM "public"."url_Table" WHERE "shortURL" = \'' . $shortCode . '\';';
+        $dest = pg_query($longURLQuery);
+        
+        // Update last visited timestamp
+        $updateLastVisited = 'UPDATE "public"."url_Table" SET "lastVisited" = now() WHERE "shortURL" = \'' . $shortCode . '\' RETURNING "ID";';
+        $resultUpdate = pg_query($updateLastVisited);
+        $keyID = pg_fetch_object($resultUpdate);
+        
+        // Update access log in stats table
+        // User IP
+        $currUserIP = $this->get_userIP();
+        
+        // Referrer
+        $ref = $this->get_referer();
+        
+        // Browser
+        $browser = @$_SERVER[HTTP_USER_AGENT];
+        
+        $insertLog = 'INSERT INTO "public"."stats_Table" ("URLID", "visitorIP", "visitedOn", "referrerURL", "browserAgent")
+                            VALUES (\'' . $keyID->ID . '\', \''.$currUserIP.'\', now(), \''.$ref.'\', \''.$browser.'\');';
+        pg_query($insertLog);
+        
+        if(pg_num_rows($dest) > 0) {
+            $retLongURL = pg_fetch_object($dest);
+            return $retLongURL->longURL;
+        } else {
+            return ''; // Default when no value found
+        }
+        
     }
     
     // Function to get the client ip address
@@ -98,6 +129,19 @@ class shortener{
                 $userIP = 'UNKNOWN';
                 
                 return $userIP;
+    }
+        
+    // Function to get the referer url
+    public function get_referer() {
+        
+        // Get referer info
+        if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
+            $ref = $_SERVER['HTTP_REFERER'];
+        } else {
+            $ref = 'No Referer Info/Direct URL Entry';
+        }
+        
+        return $ref;
     }
     
     // Close DB connection
